@@ -44,7 +44,7 @@
       // location.href = "/member/delete/" + id;
         axios({
             method: "delete",
-            url: "/member/" + id 
+            url: "/member/" + id
         }).then(res => {
             alert("삭제완료! 확인을 클릭하면 목록으로 돌아갑니다!");
             location.href = "/member/";

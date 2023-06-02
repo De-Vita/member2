@@ -61,6 +61,28 @@ public class MemberService {
     public void delete(Long id) {
         memberRepository.deleteById(id);
     }
+
+
+    public MemberDTO findByMemberEmail(String loginEmail) {
+        // 조회를 하면서 없으면 예외 처리, 있으면 MemberEntity 리턴
+        MemberEntity memberEntity = memberRepository.findByMemberEmail(loginEmail).orElseThrow(() -> new NoSuchElementException());
+        // 있는 경우 DTO로 변환하여 컨트롤러로 리턴
+        return MemberDTO.toDTO(memberEntity);
+    }
+
+    public void update(MemberDTO memberDTO) {
+        MemberEntity memberEntity = MemberEntity.toUpdateEntity(memberDTO);
+        memberRepository.save(memberEntity);
+    }
+
+    public boolean emailCheck(String memberEmail) {
+        Optional<MemberEntity> optionalMemberEntity = memberRepository.findByMemberEmail(memberEmail);
+        if (optionalMemberEntity.isEmpty()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 

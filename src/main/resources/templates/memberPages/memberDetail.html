@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <th:block th:replace="component/config :: config"></th:block>
 </head>
@@ -8,15 +8,23 @@
   <table class="table table-striped">
     <tr>
       <th>id</th>
-      <td></td>
+      <td th:text="${member.id}" ></td>
     </tr>
     <tr>
       <th>email</th>
-      <td></td>
+      <td th:text="${member.memberEmail}"></td>
     </tr>
     <tr>
       <th>name</th>
-      <td></td>
+      <td th:text="${member.memberName}"></td>
+    </tr>
+    <tr>
+      <th>birth</th>
+      <td th:text="${member.memberBirth}"></td>
+    </tr>
+    <tr>
+      <th>mobile</th>
+      <td th:text="${member.memberMobile}"></td>
     </tr>
   </table>
 </div>
